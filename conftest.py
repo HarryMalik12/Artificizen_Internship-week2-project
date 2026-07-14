@@ -1,9 +1,4 @@
-"""
-Shared pytest fixtures. The key idea: tests should NOT touch your
-real task_api.db file. Instead, we point the app at a fresh in-memory
-SQLite database for the whole test session, and override get_db so
-every request during tests uses that instead of the real database.
-"""
+
 
 import pytest
 from sqlalchemy import create_engine
