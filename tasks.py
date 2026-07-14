@@ -10,13 +10,6 @@ router = APIRouter()
 
 
 def get_owned_task_or_404(task_id: int, db: Session, current_user: User) -> Task:
-    """
-    Shared lookup used by read/update/delete below. Deliberately
-    returns a plain 404 (not 403) when the task belongs to someone
-    else - that way a user can't tell the difference between "this
-    task doesn't exist" and "this task exists but isn't yours",
-    which avoids leaking information about other users' data.
-    """
     task = (
         db.query(Task)
         .filter(Task.id == task_id, Task.owner_id == current_user.id)
