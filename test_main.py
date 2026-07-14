@@ -1,15 +1,7 @@
-"""
-Run with:
-    pytest -v
 
-Covers: register, login, create task, fetch tasks, and unauthorized
-access to a protected route without a token.
-"""
 
 
 def get_auth_headers(client, username="haris", password="mySecret123"):
-    """Helper: registers a user (ignoring if already registered from
-    a previous test), logs in, and returns headers with a valid token."""
     client.post(
         "/auth/register",
         json={"username": username, "email": f"{username}@example.com", "password": password},
